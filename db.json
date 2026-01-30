@@ -1,0 +1,796 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "test@gmail.com",
+      "phone": "12345678",
+      "password": "0000",
+      "reservations": [
+        {
+          "id": "res_1746288858050",
+          "place_id": "place_005",
+          "date": "2025-05-05",
+          "time": "19:30",
+          "status": "pending",
+          "people": 2
+        },
+        {
+          "id": "res_1746290526947",
+          "place_id": "place_002",
+          "date": "2025-05-05",
+          "time": "20:00",
+          "status": "pending",
+          "program_id": "prog_beaute_002"
+        },
+        {
+          "id": "res_1746462642873",
+          "place_id": "place_003",
+          "date": "2025-05-05",
+          "time": "23:00",
+          "status": "pending",
+          "people": 4,
+          "program_id": "prog_quad_001"
+        }
+      ],
+      "photo": "data:image/jpeg;base64,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mM19eF+2W12GrQp060Jp4Q5ozQhzevzUIPdEOtukAR12aK4yl5NqmQBFw7XTzYoADh2ujYoADh2ujYoADh2ujYoADh2ujYoADh2ujYoADh2ujYoADh2ujYoADh2ujYoADh2ujYoQb5jzXTX8ob4Mj6UGuvrZNfyhvgx7unDW6fDzYofXpQccEtuiLc50uos0R4AE2uXu3SAGuTbpe+AKisAAAAAAAAAAwIAAz1/1qtO3SQkqzyw6KEeaWaMPfFV6VaMepninp8LVHrDajFaVaMepniaVaMepni9dtqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINqMVpVox6meJpVox6meINPfWya/lDfBj0iavWnljLPVnmlj64RmjGD8+aHcD8x+nNDuOaHcD8x+nNDuOaHcD8x+nNDuOaHcD3gBXUgAAAAAAHJo+jBzMxEZyOj46T8jpPyR79vt5nDCAPORb7eaoZvlFtCT9qG+KpW3KLaEn7UN8VSuW5iqmJhct+sADt2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA94AV1IAAAAAAfFT1Q832+Knqh5or3pLyfD4AZjhhwEaNm+UW0Kf7UN8VStuUW0Kf7UN8VS3cP8qWja9IAE6QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB7wArqQAAAAyF97Xr/1+2DXshfe16/9ftgCAAhvfOXlXgAZKAABm+UW0Kf7UN8VStuUW0Kf7UN8VS3cP8qWja9IAE6QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB7wArqQAAAAyF97Xr/1+2DXshfe16/9ftgCAAhvfOXlXgAZKAABnOUUOe3yftQ3xVXo/mteUPb5P2ob4qtet3a4piIl3F2uIyiXPR/M9H83R3v3O3u9c7c9H83y+3zH1pbd2uZ/ZR3MRciPyXAE2upDyr3YAa6jlXuwA11HKvdgBrqOVe7ADXUcq92AGuo5V7sANdRyr3YAa6jlXuwA11HKvdgBrqOVe7ADXUcq92AGuo5V7sANdRyr3YAa6jlX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",
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "id": "24ed",
+      "phone": "55123456",
+      "email": "dali@gmail.com",
+      "password": "0000",
+      "reservations": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_001",
+      "name": "Restaurant",
+      "places": [
+        "place_001"
+      ]
+    },
+    {
+      "id": "cat_002",
+      "name": "Soins et Beauté",
+      "places": [
+        "place_002"
+      ]
+    },
+    {
+      "id": "cat_003",
+      "name": "Activité",
+      "places": [
+        "place_003"
+      ]
+    }
+  ],
+  "places": [
+    {
+      "id": "place_001",
+      "category_id": "cat_001",
+      "name": "La Table Gourmande",
+      "address": "123 Rue de Paris, 75001 Marrakech",
+      "city": "Marrakech",
+      "location": {
+        "lat": 31.6258,
+        "lng": -7.9892
+      },
+      "rating": 4.6,
+      "description": "Authentic French cuisine in the heart of Paris.",
+      "images": [
+        "https://cdn.pixabay.com/photo/2014/08/06/19/24/retaurant-411940_640.jpg",
+        "https://oaformation.com/wp-content/uploads/2019/10/Besoins-clients-en-restauration.jpg"
+      ],
+      "menu": [
+        "https://marketplace.canva.com/EAFwRADHMsM/1/0/1035w/canva-orange-and-black-bold-geometric-restaurant-menu-AX4bhelWqNA.jpg"
+      ],
+      "reviews": [
+        {
+          "user_id": "1",
+          "rating": 5,
+          "comment": "Amazing service and delicious food!",
+          "date": "2025-04-01"
+        }
+      ],
+      "available_slots": {
+        "2025-05-06": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-08": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-10": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-09": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-05": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "place_002",
+      "category_id": "cat_002",
+      "name": "Beauté Élégante",
+      "address": "25 Rue Lafayette, 75009 Marrakech",
+      "city": "Marrakech",
+      "location": {
+        "lat": 31.6258,
+        "lng": -7.9892
+      },
+      "rating": 4.8,
+      "description": "Luxury beauty salon with premium skincare and hairstyling services.",
+      "images": [
+        "https://example.com/images/salon1.jpg"
+      ],
+      "menu": [
+        "https://marketplace.canva.com/EAFwRADHMsM/1/0/1035w/canva-orange-and-black-bold-geometric-restaurant-menu-AX4bhelWqNA.jpg"
+      ],
+      "reviews": [],
+      "programs": [
+        {
+          "id": "prog_beaute_001",
+          "title": "Présentation 1",
+          "description": "Hammam + gommage au savon noir + savonnage",
+          "price": 150,
+          "duration_minutes": 30,
+          "available_slots": {
+            "2025-05-05": [
+              {
+                "time": "16:00",
+                "reserved_by": null
+              },
+              {
+                "time": "17:00",
+                "reserved_by": null
+              }
+            ],
+            "2025-05-04": [
+              {
+                "time": "16:00",
+                "reserved_by": null
+              },
+              {
+                "time": "18:00",
+                "reserved_by": null
+              }
+            ]
+          }
+        },
+        {
+          "id": "prog_beaute_002",
+          "title": "Présentation 2",
+          "description": "Massage relaxant aux huiles essentielles",
+          "price": 200,
+          "duration_minutes": 45,
+          "available_slots": {
+            "2025-05-05": [
+              {
+                "time": "18:00",
+                "reserved_by": null
+              },
+              {
+                "time": "20:00",
+                "reserved_by": "1"
+              }
+            ]
+          }
+        },
+        {
+          "id": "prog_beaute_003",
+          "title": "Présentation 3",
+          "description": "Soin du visage complet avec masque hydratant",
+          "price": 180,
+          "duration_minutes": 40,
+          "available_slots": {
+            "2025-05-04": [
+              {
+                "time": "18:00",
+                "reserved_by": null
+              },
+              {
+                "time": "21:00",
+                "reserved_by": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "place_003",
+      "category_id": "cat_003",
+      "name": "Yoga Zen Experience",
+      "address": "12 Rue des Martyrs, 75018 Marrakech",
+      "city": "Marrakech",
+      "location": {
+        "lat": 31.6258,
+        "lng": -7.9892
+      },
+      "rating": 4.5,
+      "description": "Join our group yoga sessions for peace of mind and body balance.",
+      "images": [
+        "https://saharadeserttour.com/wp-content/uploads/2020/12/saharadesertour_3-scaled.jpg"
+      ],
+      "menu": [],
+      "reviews": [],
+      "moyens": [
+        {
+          "id": "quad",
+          "programs": [
+            {
+              "id": "prog_quad_001",
+              "title": "Quad découverte",
+              "description": "Balade en quad dans le désert de 30 min",
+              "price": 300,
+              "duration_minutes": 30,
+              "available_slots": {
+                "2025-05-05": [
+                  {
+                    "time": "22:00",
+                    "reserved_by": "1"
+                  },
+                  {
+                    "time": "23:00",
+                    "reserved_by": "1"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "prog_quad_002",
+              "title": "Quad Aventure",
+              "description": "Excursion sportive avec moniteur",
+              "price": 500,
+              "duration_minutes": 60,
+              "available_slots": {
+                "2025-05-05": [
+                  {
+                    "time": "22:00",
+                    "reserved_by": null
+                  },
+                  {
+                    "time": "23:00",
+                    "reserved_by": null
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "balloon",
+          "programs": [
+            {
+              "id": "prog_balloon_001",
+              "title": "Vol Matinal",
+              "description": "Vol au lever du soleil avec petit déjeuner inclus",
+              "price": 1200,
+              "duration_minutes": 90,
+              "available_slots": {
+                "2025-05-05": [
+                  {
+                    "time": "22:00",
+                    "reserved_by": null
+                  },
+                  {
+                    "time": "23:00",
+                    "reserved_by": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "place_004",
+      "category_id": "cat_001",
+      "name": "Le Riad Gourmet",
+      "address": "45 Rue Sidi Abdelaziz, 40000 Marrakech",
+      "city": "Marrakech",
+      "location": {
+        "lat": 31.63,
+        "lng": -7.9898
+      },
+      "rating": 4.7,
+      "description": "Elegant Moroccan dining in a traditional riad setting.",
+      "images": [
+        "https://cdn.pixabay.com/photo/2014/08/06/19/24/retaurant-411940_640.jpg",
+        "https://oaformation.com/wp-content/uploads/2019/10/Besoins-clients-en-restauration.jpg"
+      ],
+      "menu": [
+        "https://example.com/images/menu_riad.jpg"
+      ],
+      "reviews": [],
+      "available_slots": {
+        "2025-05-10": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-09": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-05": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-04": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-06": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "place_005",
+      "category_id": "cat_001",
+      "name": "Beldi Bistro",
+      "address": "22 Derb El Ferrane, Medina, Marrakech",
+      "city": "Marrakech",
+      "location": {
+        "lat": 31.6285,
+        "lng": -7.9833
+      },
+      "rating": 4.3,
+      "description": "Cozy garden café serving fusion Moroccan-European dishes.",
+      "images": [
+        "https://cdn.pixabay.com/photo/2014/08/06/19/24/retaurant-411940_640.jpg",
+        "https://oaformation.com/wp-content/uploads/2019/10/Besoins-clients-en-restauration.jpg"
+      ],
+      "menu": [
+        "https://example.com/images/menu_beldi.jpg"
+      ],
+      "reviews": [],
+      "available_slots": {
+        "2025-05-06": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-08": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-10": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-09": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": null
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ],
+        "2025-05-05": [
+          {
+            "time": "11:00",
+            "reserved_by": null
+          },
+          {
+            "time": "12:00",
+            "reserved_by": null
+          },
+          {
+            "time": "13:00",
+            "reserved_by": null
+          },
+          {
+            "time": "14:00",
+            "reserved_by": null
+          },
+          {
+            "time": "18:00",
+            "reserved_by": null
+          },
+          {
+            "time": "19:30",
+            "reserved_by": "1"
+          },
+          {
+            "time": "21:00",
+            "reserved_by": null
+          }
+        ]
+      }
+    }
+  ],
+  "moyens": [
+    {
+      "id": "quad",
+      "name": "Quad",
+      "image": "https://d3rr2gvhjw0wwy.cloudfront.net/uploads/activity_galleries/129615/2000x2000-0-70-9bd0fd0fdabcdd237e39eb0aad585133.jpg"
+    },
+    {
+      "id": "buggy",
+      "name": "Buggy",
+      "image": "https://example.com/images/buggy.jpg"
+    },
+    {
+      "id": "moto",
+      "name": "Moto Cross",
+      "image": "https://example.com/images/moto.jpg"
+    },
+    {
+      "id": "balloon",
+      "name": "Montgolfières",
+      "image": "https://tourismenouveaubrunswick.ca/sites/default/files/styles/homepage_hero/public/images/events/atlantic_balloon_fiesta_18-large_0.jpg"
+    }
+  ]
+}

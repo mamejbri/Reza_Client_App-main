@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Button */
+
+.btn-icon {
+    @apply w-55 h-55 bg-danger rounded-md items-center justify-center;
+}
+
+.btn-primary {
+    @apply h-72 px-4 py-4 bg-danger rounded-md justify-center items-center;
+}
+
+.btn-primary-text {
+    @apply text-white text-lg font-bold;
+}
+
+.btn-outline {
+    @apply h-72 px-4 py-4 border border-danger bg-transparent rounded-md justify-center items-center;
+}
+
+.btn-outline-text {
+    @apply text-danger text-lg font-bold;
+}
+
+.btn-black {
+    @apply h-72 px-4 py-4 bg-black rounded-md justify-center items-center;
+}
+
+.btn-black-text {
+    @apply text-white text-lg font-bold;
+}
+
+.btn-small {
+    @apply h-52 px-4 bg-danger rounded-md justify-center items-center;
+}
+
+.btn-small-text {
+    @apply text-white text-base font-bold;
+}
+
+.btn-small-icon {
+    @apply h-52 px-4 py-2 bg-danger rounded-md flex-row items-center gap-1;
+}
+
+.btn-small-icon-text {
+    @apply text-white text-base font-bold;
+}
+
+.btn-light-icon {
+    @apply h-52 px-4 py-2 bg-neutral rounded-md flex-row items-center gap-1;
+}
+
+.btn-light-icon-text {
+    @apply text-black text-base font-bold;
+}
+
+.btn-smallest-icon {
+    @apply h-[40] w-[40] bg-danger rounded-full flex-row items-center justify-center;
+}
+
+/* Input */
+
+.input-base {
+    @apply h-72 px-4 py-2.5 bg-black-3 rounded-md text-base text-black;
+}
