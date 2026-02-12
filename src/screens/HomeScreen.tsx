@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 20,
     overflow: 'hidden',
-    backgroundColor: '#000', // ✅ background for contain
+    backgroundColor: '#000', // ✅ backgroound for contain
   },
 
   image: {

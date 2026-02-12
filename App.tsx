@@ -52,7 +52,7 @@ const App: React.FC = () => {
         const token = await getToken();
 
         if (token) {
-          // 🔐 Restore axios header
+          // 🔐 Restore axios heaeeeder   
           http.defaults.headers.common.Authorization = `Bearer ${token}`;
         }
       } catch (e) {
