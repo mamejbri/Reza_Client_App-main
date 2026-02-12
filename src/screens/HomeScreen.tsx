@@ -1,5 +1,5 @@
 // src/screens/HomeScreen.tsx
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
   Text,
   Pressable,
@@ -7,9 +7,8 @@ import {
   View,
   SafeAreaView,
   StatusBar,
-  Dimensions,
-  Platform,
   StyleSheet,
+  useWindowDimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -41,81 +40,51 @@ const categories = [
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
+  const { width } = useWindowDimensions();
 
-  const { height } = Dimensions.get('window');
-  const safeTop = Platform.select({ ios: 20, android: 8, default: 8 });
+  const isTablet = width >= 768;
+  const horizontalPadding = 16;
+  const gap = 14;
 
-  // Title + spacing
-  const headerHeight = 60;
-  const totalVerticalPadding = (safeTop ?? 8) + 100;
+  const cardWidth = isTablet
+    ? (width - horizontalPadding * 2 - gap) / 2
+    : width - horizontalPadding * 2;
 
-  // Space available for the 3 cards (NO scroll)
-  const availableHeight = height - (headerHeight + totalVerticalPadding);
-
-  // Each card takes exactly 1/3 of the remaining height
-  const cardHeight = useMemo(
-    () => Math.max(140, Math.floor(availableHeight / 3)),
-    [availableHeight]
-  );
+  const aspectRatio = 16 / 9;
 
   return (
-    <View className="flex-1 bg-white">
+    <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView />
 
-      {/* HEADER TITLE */}
-      <View style={{ height: headerHeight, justifyContent: 'center' }}>
-        <Text className="text-center text-2xl font-extrabold tracking-tight mt-2"style={{ fontFamily: 'Montserrat-Bold' }}>
-          On réserve quoi ?
-        </Text>
-      </View>
+      <Text style={styles.title}>On réserve quoi ?</Text>
 
-      {/* FIXED 3 SECTIONS – NO SCROLL */}
-      <View style={{ flex: 1, paddingHorizontal: 16, paddingBottom: 20 }}>
-        {categories.map((item, idx) => (
+      <View style={[styles.grid, { paddingHorizontal: horizontalPadding, gap }]}>
+        {categories.map((item) => (
           <Pressable
             key={item.id}
-            onPress={() => {
-              requestAnimationFrame(() => {
-                navigation.navigate("SearchResults", {
-                  type: item.type,
-                });
-              });
-            }}
-            android_ripple={{ color: 'rgba(0,0,0,0.1)' }}
-            style={{
-              height: cardHeight,
-              marginBottom: idx === categories.length - 1 ? 0 : 12,
-            }}
-            className="rounded-2xl overflow-hidden shadow"
-            
+            onPress={() =>
+              navigation.navigate('SearchResults', { type: item.type })
+            }
+            style={[
+              styles.card,
+              {
+                width: cardWidth,
+                aspectRatio,
+              },
+            ]}
           >
             <ImageBackground
-              source={item.image}
-              resizeMode="cover"
-              style={{ flex: 1 }}
-            >
-              {/* Overlay */}
-              <View style={StyleSheet.absoluteFillObject} className="bg-black/40" />
+          source={item.image}
+          resizeMode="cover"
+          style={styles.image}
+        >
+              {/* semi-transparent overlay */}
+              <View style={styles.overlay} />
 
-              {/* Centered label */}
-              <View
-                style={StyleSheet.absoluteFillObject}
-                className="items-center justify-center px-4"
-              >
-                <Text
-                  className="text-white font-extrabold text-center"
-                  style={{
-                    fontSize: 24,
-                    fontFamily: 'Montserrat-Bold',
-                    textShadowColor: 'rgba(0,0,0,0.5)',
-                    textShadowOffset: { width: 0, height: 1 },
-                    textShadowRadius: 3,
-
-                  }}
-                >
-                  {item.label}
-                </Text>
+              {/* label */}
+              <View style={styles.center}>
+                <Text style={styles.cardText}>{item.label}</Text>
               </View>
             </ImageBackground>
           </Pressable>
@@ -126,3 +95,57 @@ const HomeScreen: React.FC = () => {
 };
 
 export default HomeScreen;
+
+/* ---------------- STYLES ---------------- */
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+
+  title: {
+    textAlign: 'center',
+    fontSize: 26,
+    fontFamily: 'Montserrat-Bold',
+    marginVertical: 12,
+  },
+
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+
+  card: {
+    borderRadius: 20,
+    overflow: 'hidden',
+    backgroundColor: '#000', // ✅ background for contain
+  },
+
+  image: {
+    flex: 1,
+  },
+
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.25)',
+  },
+
+  center: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+  },
+
+  cardText: {
+    color: '#fff',
+    fontSize: 24,
+    fontFamily: 'Montserrat-Bold',
+    textAlign: 'center',
+    textShadowColor: 'rgba(0,0,0,0.6)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 4,
+  },
+});
