@@ -8,7 +8,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import IcoMoonIcon from '../src/icons/IcoMoonIcon';
 import ChangePasswordModal from '../components/ChangePasswordModal';
 import { logout } from '../services/auth';
-import { clearCachedUser } from '../services/user'; // keep if you rely on it elsewhere
+import { clearCachedUser } from '../services/user';
 import { getClientProfile, updateClientPhotoBase64, updateClientProfile } from '../services/clients';
 import { getToken } from '../services/auth';
 
@@ -31,37 +31,37 @@ const Profile: React.FC = () => {
   const [originalLastName, setOriginalLastName] = useState('');
   const [originalPhone, setOriginalPhone] = useState('');
 
-const hydrate = useCallback(async () => {
-  const token = await getToken();
+  const hydrate = useCallback(async () => {
+    const token = await getToken();
 
-  if (!token) {
-    // user is logged out → wipe UI
-    setEmail('');
-    setPhone('');
-    setFirstName('');
-    setLastName('');
-    setPhoto(undefined);
-    return;
-  }
+    if (!token) {
+      // user is logged out → wipe UI
+      setEmail('');
+      setPhone('');
+      setFirstName('');
+      setLastName('');
+      setPhoto(undefined);
+      return;
+    }
 
-  const user = await getClientProfile();
-  if (user) {
-    const normalizedPhone =
-      user.phone?.startsWith('+') ? user.phone : `+${user.phone || ''}`;
+    const user = await getClientProfile();
+    if (user) {
+      const normalizedPhone =
+        user.phone?.startsWith('+') ? user.phone : `+${user.phone || ''}`;
 
-    setEmail(user.email || '');
-    setPhone(normalizedPhone);
-    setOriginalPhone(normalizedPhone);
+      setEmail(user.email || '');
+      setPhone(normalizedPhone);
+      setOriginalPhone(normalizedPhone);
 
-    setFirstName(user.firstName || '');
-    setLastName(user.lastName || '');
-    setPhoto(user.photo ?? undefined); // 🔴 FIXED FIELD NAME
-    setPhotoVersion(Date.now());
+      setFirstName(user.firstName || '');
+      setLastName(user.lastName || '');
+      setPhoto(user.photo ?? undefined); // 🔴 FIXED FIELD NAME
+      setPhotoVersion(Date.now());
 
-    setOriginalFirstName(user.firstName || '');
-    setOriginalLastName(user.lastName || '');
-  }
-}, []);
+      setOriginalFirstName(user.firstName || '');
+      setOriginalLastName(user.lastName || '');
+    }
+  }, []);
 
 
   // Load from server when this screen mounts AND when it regains focus
@@ -78,42 +78,43 @@ const hydrate = useCallback(async () => {
     setEmail(''); setPhone(''); setFirstName(''); setLastName(''); setPhoto(undefined);
     setEditing(false);
     Alert.alert('Déconnecté', 'Vous avez été déconnecté.');
-navigation.reset({
-  index: 0,
-  routes: [{ name: 'Login' }],
-});  };
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Login' }],
+    });
+  };
 
- const handleSave = async () => {
-  if (!phone.trim().startsWith('+')) {
-    Alert.alert('Numéro WhatsApp invalide', 'Le numéro doit commencer par +');
-    return;
-  }
+  const handleSave = async () => {
+    if (!phone.trim().startsWith('+')) {
+      Alert.alert('Numéro WhatsApp invalide', 'Le numéro doit commencer par +');
+      return;
+    }
 
-  if (!firstName.trim() || !lastName.trim()) {
-    Alert.alert('Erreur', 'Veuillez remplir votre nom et prénom.');
-    return;
-  }
+    if (!firstName.trim() || !lastName.trim()) {
+      Alert.alert('Erreur', 'Veuillez remplir votre nom et prénom.');
+      return;
+    }
 
-  setLoading(true);
+    setLoading(true);
 
-  const result = await updateClientProfile({
-    firstName,
-    lastName,
-    phone,
-  });
+    const result = await updateClientProfile({
+      firstName,
+      lastName,
+      phone,
+    });
 
-  setLoading(false);
+    setLoading(false);
 
-  if (result.success) {
-    Alert.alert('Succès', 'Profil mis à jour.');
-    setEditing(false);
-    setOriginalFirstName(firstName);
-    setOriginalLastName(lastName);
-    setOriginalPhone(phone);
-  } else {
-    Alert.alert('Erreur', result.message);
-  }
-};
+    if (result.success) {
+      Alert.alert('Succès', 'Profil mis à jour.');
+      setEditing(false);
+      setOriginalFirstName(firstName);
+      setOriginalLastName(lastName);
+      setOriginalPhone(phone);
+    } else {
+      Alert.alert('Erreur', result.message);
+    }
+  };
 
 
   const handleCancel = () => {
@@ -123,45 +124,68 @@ navigation.reset({
     setEditing(false);
   };
 
- const pickImage = async () => {
-  try {
-    const result = await launchImageLibrary({
-      mediaType: 'photo',
-      maxWidth: 512,
-      maxHeight: 512,
-      quality: 0.7,
-      includeBase64: true,
-    });
+  const pickImage = async () => {
+    try {
+      const result = await launchImageLibrary({
+        mediaType: 'photo',
+        maxWidth: 512,
+        maxHeight: 512,
+        quality: 0.7,
+        includeBase64: true,
+      });
 
-    if (!result.assets?.length) return;
+      if (!result.assets?.length) return;
 
-    const asset = result.assets[0];
+      const asset = result.assets[0];
 
-    if (!asset.base64 || !asset.type) {
-      Alert.alert('Erreur', "Impossible de lire l'image.");
-      return;
+      if (!asset.base64 || !asset.type) {
+        Alert.alert('Erreur', "Impossible de lire l'image.");
+        return;
+      }
+
+      const base64Image = `data:${asset.type};base64,${asset.base64}`;
+
+      setLoading(true);
+
+      const uploadResult = await updateClientPhotoBase64(base64Image);
+
+      setLoading(false);
+
+      if (uploadResult.success) {
+        setPhoto(uploadResult.data?.photo ?? undefined);
+        setPhotoVersion(Date.now()); // 🔥 FORCE IMAGE REFRESH
+        Alert.alert('Succès', 'Photo de profil mise à jour.');
+      } else {
+        Alert.alert('Erreur', uploadResult.message);
+      }
+    } catch (e) {
+      console.error(e);
+      Alert.alert('Erreur', 'Impossible de sélectionner une image.');
     }
-
-    const base64Image = `data:${asset.type};base64,${asset.base64}`;
-
-    setLoading(true);
-
-    const uploadResult = await updateClientPhotoBase64(base64Image);
-
-    setLoading(false);
-
-    if (uploadResult.success) {
-      setPhoto(uploadResult.data?.photo ?? undefined);
-      setPhotoVersion(Date.now()); // 🔥 FORCE IMAGE REFRESH
-      Alert.alert('Succès', 'Photo de profil mise à jour.');
-    } else {
-      Alert.alert('Erreur', uploadResult.message);
-    }
-  } catch (e) {
-    console.error(e);
-    Alert.alert('Erreur', 'Impossible de sélectionner une image.');
-  }
-};
+  };
+  const handleRequestDeletion = () => {
+    Alert.alert(
+      "Supprimer le compte",
+      "Voulez-vous vraiment demander la suppression de votre compte ? Cette action est irréversible.",
+      [
+        { text: "Annuler", style: "cancel" },
+        {
+          text: "Confirmer",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              setLoading(true);
+              setLoading(false);
+              navigation.navigate('DeletionRequest');
+            } catch (e) {
+              setLoading(false);
+              Alert.alert("Erreur", "Impossible d'envoyer la demande.");
+            }
+          },
+        },
+      ]
+    );
+  };
 
 
 
@@ -228,15 +252,15 @@ navigation.reset({
 
         <View className="flex gap-1">
           <Text className="text-sm font-medium">Téléphone</Text>
-            <TextInput
-              value={phone}
-              editable={editing}
-              onChangeText={setPhone}
-              keyboardType="phone-pad"
-              className="input-base bg-gray-100 text-black"
-              placeholder="+216..."
-              placeholderTextColor="#000"
-            />
+          <TextInput
+            value={phone}
+            editable={editing}
+            onChangeText={setPhone}
+            keyboardType="phone-pad"
+            className="input-base bg-gray-100 text-black"
+            placeholder="+216..."
+            placeholderTextColor="#000"
+          />
         </View>
       </View>
 
@@ -258,6 +282,22 @@ navigation.reset({
             <TouchableOpacity onPress={handleLogout} className="btn-primary w-full">
               <Text className="btn-primary-text text-center">Déconnexion</Text>
             </TouchableOpacity>
+            <View style={{ marginTop: 30 }}>
+
+
+              <TouchableOpacity onPress={handleRequestDeletion}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    color: '#C53334',
+                    fontFamily: 'Montserrat-Bold',
+                  }}
+                >
+                  Supprimer mon compte
+                </Text>
+              </TouchableOpacity>
+            </View>
+
           </>
         )}
       </View>

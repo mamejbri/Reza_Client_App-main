@@ -22,7 +22,7 @@ export type RootStackParamList = {
     background: any;
     type: EstablishmentType;
   };
-
+  DeletionRequest: undefined;
   // Results
   SearchResults: {
     query?: string | null;
@@ -31,20 +31,20 @@ export type RootStackParamList = {
   };
 
   // Auth
-Login: {
-  redirectAfterLogin?: {
-    screen: keyof RootStackParamList;
-    params?: any;
-  };
-};  
-
-Signup: {
+  Login: {
     redirectAfterLogin?: {
-    screen: RootStackScreenName;
+      screen: keyof RootStackParamList;
       params?: any;
     };
   };
-    ForgotPassword: undefined; // 🔹 utilisé par Login & ForgotPasswordScreen
+
+  Signup: {
+    redirectAfterLogin?: {
+      screen: RootStackScreenName;
+      params?: any;
+    };
+  };
+  ForgotPassword: undefined; // 🔹 utilisé par Login & ForgotPasswordScreen
 
   // User area
   Appointments: { type?: EstablishmentType } | undefined;

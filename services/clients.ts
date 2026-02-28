@@ -61,4 +61,18 @@ export async function updateClientPhotoBase64(base64: string) {
       message: e?.response?.data?.message ?? e?.message,
     };
   }
+
+
 }
+
+export const requestAccountDeletion = async (payload?: { reason?: string }) => {
+  try {
+    await http.post('/clients/me/request-deletion', payload ?? {});
+    return { success: true };
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error?.response?.data || 'Erreur serveur.',
+    };
+  }
+};

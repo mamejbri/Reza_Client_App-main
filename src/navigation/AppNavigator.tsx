@@ -14,6 +14,7 @@ import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 
 import Navbar from '../../components/Navbar';
 import type { RootStackParamList } from '../../types/navigation';
+import DeletionRequestScreen from '../../components/AccountDelete';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -41,6 +42,8 @@ const AppNavigator = () => {
       <Stack.Screen name="SearchResults" component={SearchResultsScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="EstablishmentBooking" component={EstablishmentBookingScreen} />
+      <Stack.Screen name="DeletionRequest" component={DeletionRequestScreen}
+      />
     </Stack.Navigator>
   );
 };
