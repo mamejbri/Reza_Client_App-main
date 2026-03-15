@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { View, Text, ActivityIndicator } from 'react-native';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import AppNavigator from './src/navigation/AppNavigator';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { LocaleConfig } from 'react-native-calendars';
 
-import "./global.css";
+import AppNavigator from './src/navigation/AppNavigator';
+//import "./global.css";
+
 import { getToken } from './services/auth';
 import http from './src/api/http';
 
 /* =====================================================
    🌍 French Calendar Locale
 ===================================================== */
+
 LocaleConfig.locales['fr'] = {
   monthNames: [
     'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
@@ -30,8 +33,9 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr';
 
 /* =====================================================
-   🎨 App Theme
+   🎨 Theme
 ===================================================== */
+
 const MyTheme = {
   ...DefaultTheme,
   colors: {
@@ -41,32 +45,57 @@ const MyTheme = {
 };
 
 /* =====================================================
-   🚀 App Component
+   🚀 App
 ===================================================== */
+
 const App: React.FC = () => {
+
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+
     const restoreSession = async () => {
+
+      console.log("🔄 Restoring session...");
+
       try {
+
         const token = await getToken();
 
         if (token) {
-          // 🔐 Restore axios heaeeeder   
+          console.log("✅ Token restored");
           http.defaults.headers.common.Authorization = `Bearer ${token}`;
+        } else {
+          console.log("⚠️ No token found");
         }
+
       } catch (e) {
-        console.log('Session restore failed:', e);
+
+        console.log("❌ Session restore error:", e);
+
       } finally {
+
+        console.log("🚀 App ready");
         setIsReady(true);
+
       }
+
     };
 
     restoreSession();
+
   }, []);
 
-  // 🔥 Prevent rendering navigation before session is restored
-  if (!isReady) return null;
+  /* Loading screen instead of blank screen */
+
+  if (!isReady) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+        <Text style={{ marginTop: 10 }}>Loading REZA...</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaProvider>
@@ -75,6 +104,7 @@ const App: React.FC = () => {
       </NavigationContainer>
     </SafeAreaProvider>
   );
+
 };
 
 export default App;
